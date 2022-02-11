@@ -2,7 +2,7 @@ import 'package:amit_app/custom_icons_icons.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(SignUp());
+  runApp(Login());
 }
 
 class Login extends StatelessWidget {
@@ -12,6 +12,23 @@ class Login extends StatelessWidget {
   static const colorRed = const Color(0xffe9002d);
   static const colorDarkRed = const Color(0xffa70000);
 
+  static const MaterialColor red = MaterialColor(
+    _redPrimaryValue,
+    <int, Color>{
+      50: Color(0xFFFFEBEE),
+      100: Color(0xFFFFCDD2),
+      200: Color(0xFFEF9A9A),
+      300: Color(0xFFE57373),
+      400: Color(0xFFEF5350),
+      500: Color(_redPrimaryValue),
+      600: Color(0xFFE53935),
+      700: Color(0xFFD32F2F),
+      800: colorDarkRed,
+      900: colorDarkRed,
+    },
+  );
+  static const int _redPrimaryValue = 0xffe9002d;
+
   static const String _title = 'Amit Learning App';
   // This widget is the root of your application.
   @override
@@ -20,6 +37,8 @@ class Login extends StatelessWidget {
       title: _title,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
+        primaryColor: colorRed,
+        primaryColorDark: colorDarkRed,
         // This is the theme of your application.
         //
         // Try running your application with "flutter run". You'll see the
@@ -29,7 +48,7 @@ class Login extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.red,
+        primarySwatch: red,
       ),
       home: Scaffold(
         // appBar: AppBar(title: const Text(_title)),
@@ -85,22 +104,26 @@ class Login extends StatelessWidget {
                         style: TextStyle(),
                       ),
                       onPressed: () {
-                        print(emailController.text);
-                        print(passwordController.text);
+                        print("Email: ${emailController.text}");
+                        print("Password: ${passwordController.text}");
                       },
                       style: ButtonStyle(
                           shape:
                               MaterialStateProperty.all<RoundedRectangleBorder>(
                                   RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(18.0),
-                                      side: BorderSide(color: Colors.red)))),
+                                      side: BorderSide(color: colorRed)))),
                     )),
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextButton(
+                      style: TextButton.styleFrom(
+                        primary: Colors.white.withAlpha(0),
+                      ),
                       onPressed: () {
                         //forgot password screen
+                        print("Go to SignUp");
                       },
                       child: const Text(
                         'Go SignUp'
@@ -152,6 +175,22 @@ class SignUp extends StatelessWidget {
   static const colorRed = const Color(0xffe9002d);
   static const colorDarkRed = const Color(0xffa70000);
 
+  static const MaterialColor red = MaterialColor(
+    _redPrimaryValue,
+    <int, Color>{
+      50: Color(0xFFFFEBEE),
+      100: Color(0xFFFFCDD2),
+      200: Color(0xFFEF9A9A),
+      300: Color(0xFFE57373),
+      400: Color(0xFFEF5350),
+      500: Color(_redPrimaryValue),
+      600: Color(0xFFE53935),
+      700: Color(0xFFD32F2F),
+      800: colorDarkRed,
+      900: colorDarkRed,
+    },
+  );
+  static const int _redPrimaryValue = 0xffe9002d;
   static const String _title = 'Amit Learning App';
   // This widget is the root of your application.
   @override
@@ -169,7 +208,7 @@ class SignUp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.red,
+        primarySwatch: red,
       ),
       home: Scaffold(
         // appBar: AppBar(title: const Text(_title)),
@@ -239,23 +278,27 @@ class SignUp extends StatelessWidget {
                         style: TextStyle(),
                       ),
                       onPressed: () {
-                        print(nameController.text);
-                        print(emailController.text);
-                        print(passwordController.text);
+                        print("Name: ${nameController.text}");
+                        print("Email: ${emailController.text}");
+                        print("Password: ${passwordController.text}");
                       },
                       style: ButtonStyle(
                           shape:
                           MaterialStateProperty.all<RoundedRectangleBorder>(
                               RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
-                                  side: BorderSide(color: Colors.red)))),
+                                  side: BorderSide(color: colorRed)))),
                     )),
                 Center(
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: TextButton(
+                      style: TextButton.styleFrom(
+                        primary: Colors.white.withAlpha(0),
+                      ),
                       onPressed: () {
-                        //forgot password screen
+                        //Go to Login
+                        print("Go to Login");
                       },
                       child: const Text(
                         'Have an account?\nGo Login'
