@@ -2,7 +2,7 @@ import 'package:amit_app/custom_icons_icons.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(Login());
+  runApp(SignUp());
 }
 
 class Login extends StatelessWidget {
@@ -96,7 +96,7 @@ class Login extends StatelessWidget {
                   ),
                 ),
                 Container(
-                    margin: EdgeInsets.fromLTRB(100, 0, 100, 0),
+                    margin: EdgeInsets.fromLTRB(100, 10, 100, 0),
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: ElevatedButton(
                       child: const Text(
@@ -270,7 +270,7 @@ class SignUp extends StatelessWidget {
                   ),
                 ),
                 Container(
-                    margin: EdgeInsets.fromLTRB(100, 0, 100, 0),
+                    margin: EdgeInsets.fromLTRB(100, 10, 100, 0),
                     padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                     child: ElevatedButton(
                       child: const Text(
