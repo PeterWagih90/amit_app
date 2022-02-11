@@ -76,6 +76,7 @@ class Login extends StatelessWidget {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       labelText: 'Email',
+                      labelStyle: TextStyle(color: Colors.black),
                     ),
                     keyboardType: TextInputType.emailAddress,
                   ),
@@ -90,6 +91,7 @@ class Login extends StatelessWidget {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       labelText: 'Password',
+                      labelStyle: TextStyle(color: Colors.black),
                       suffixIcon: Icon(CustomIcons.eye_slash,size: 15,),
                       suffixIconColor: colorRed,
                     ),
@@ -168,10 +170,13 @@ class Login extends StatelessWidget {
 
 
 class SignUp extends StatelessWidget {
+
   SignUp({Key? key}) : super(key: key);
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
+
   static const colorRed = const Color(0xffe9002d);
   static const colorDarkRed = const Color(0xffa70000);
 
@@ -232,10 +237,13 @@ class SignUp extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: TextFormField(
                     controller: nameController,
-                    decoration: const InputDecoration(
+                    decoration:  InputDecoration(
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       labelText: 'Name',
+                        labelStyle: TextStyle(
+                            color: Colors.black
+                        )
                     ),
                     keyboardType: TextInputType.name,
                   ),
@@ -250,6 +258,7 @@ class SignUp extends StatelessWidget {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15))),
                     labelText: 'Email',
+                    labelStyle: TextStyle(color: Colors.black),
                   ),
                   keyboardType: TextInputType.emailAddress,
                 ),
@@ -264,6 +273,7 @@ class SignUp extends StatelessWidget {
                       border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       labelText: 'Password',
+                      labelStyle: TextStyle(color: Colors.black),
                       suffixIcon: Icon(CustomIcons.eye_slash,size: 15,),
                       suffixIconColor: colorRed,
                     ),
