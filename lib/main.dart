@@ -12,6 +12,7 @@ class Login extends StatelessWidget {
   static const colorRed = const Color(0xffe9002d);
   static const colorDarkRed = const Color(0xffa70000);
 
+
   static const MaterialColor red = MaterialColor(
     _redPrimaryValue,
     <int, Color>{
@@ -33,6 +34,7 @@ class Login extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    var passwordFocusNode = FocusNode();
     return MaterialApp(
       title: _title,
       debugShowCheckedModeBanner: false,
@@ -59,12 +61,12 @@ class Login extends StatelessWidget {
                 Container(
                     alignment: Alignment.center,
                     padding: const EdgeInsets.all(10),
-                    child: Image(
+                    child: const Image(
                       image: AssetImage('assets/images/amit.jpg'),
                       height: 200,
                       width: 250,
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 50,
                 ),
                 Container(
@@ -87,13 +89,15 @@ class Login extends StatelessWidget {
                   child: TextFormField(
                     obscureText: true,
                     controller: passwordController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
+                    focusNode: passwordFocusNode,
+                    decoration:  InputDecoration(
+                      border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       labelText: 'Password',
-                      labelStyle: TextStyle(color: Colors.black),
-                      suffixIcon: Icon(CustomIcons.eye_slash,size: 15,),
-                      suffixIconColor: colorRed,
+                      labelStyle: const TextStyle(color: Colors.black),
+                      suffixIcon: Icon(CustomIcons.eye_slash,size: 15,color: passwordFocusNode.hasFocus? colorRed :Colors.black,),
+                      suffixIconColor: passwordFocusNode.hasFocus? colorRed :Colors.black,
+                      iconColor: passwordFocusNode.hasFocus? colorRed :Colors.black,
                     ),
                   ),
                 ),
@@ -170,6 +174,8 @@ class Login extends StatelessWidget {
 
 
 class SignUp extends StatelessWidget {
+  var passwordFocusNode = FocusNode();
+
 
   SignUp({Key? key}) : super(key: key);
   TextEditingController nameController = TextEditingController();
@@ -267,15 +273,17 @@ class SignUp extends StatelessWidget {
                   margin: EdgeInsets.fromLTRB(70, 0, 70, 0),
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: TextFormField(
+                    focusNode: passwordFocusNode,
                     obscureText: true,
                     controller: passwordController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
+                    decoration:  InputDecoration(
+                      border: const OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
                       labelText: 'Password',
                       labelStyle: TextStyle(color: Colors.black),
-                      suffixIcon: Icon(CustomIcons.eye_slash,size: 15,),
-                      suffixIconColor: colorRed,
+                      suffixIcon: Icon(CustomIcons.eye_slash,size: 15,color: passwordFocusNode.hasFocus? colorRed :Colors.black,),
+                      suffixIconColor: passwordFocusNode.hasFocus? colorRed :Colors.black,
+                      iconColor: passwordFocusNode.hasFocus? colorRed :Colors.black,
                     ),
                   ),
                 ),
