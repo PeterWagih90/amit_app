@@ -12,7 +12,6 @@ class Login extends StatelessWidget {
   static const colorRed = const Color(0xffe9002d);
   static const colorDarkRed = const Color(0xffa70000);
 
-
   static const MaterialColor red = MaterialColor(
     _redPrimaryValue,
     <int, Color>{
@@ -34,7 +33,6 @@ class Login extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    var passwordFocusNode = FocusNode();
     return MaterialApp(
       title: _title,
       debugShowCheckedModeBanner: false,
@@ -86,20 +84,9 @@ class Login extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.fromLTRB(70, 0, 70, 0),
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: TextFormField(
-                    obscureText: true,
-                    controller: passwordController,
-                    focusNode: passwordFocusNode,
-                    decoration:  InputDecoration(
-                      border: const OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
-                      labelText: 'Password',
-                      labelStyle: const TextStyle(color: Colors.black),
-                      suffixIcon: Icon(CustomIcons.eye_slash,size: 15,color: passwordFocusNode.hasFocus? colorRed :Colors.black,),
-                      suffixIconColor: passwordFocusNode.hasFocus? colorRed :Colors.black,
-                      iconColor: passwordFocusNode.hasFocus? colorRed :Colors.black,
-                    ),
-                  ),
+                  child: PasswordWidget(
+                      passwordController: passwordController,
+                      colorDefault: colorRed),
                 ),
                 Container(
                     margin: EdgeInsets.fromLTRB(100, 10, 100, 0),
@@ -132,8 +119,8 @@ class Login extends StatelessWidget {
                         print("Go to SignUp");
                       },
                       child: const Text(
-                        'Go SignUp'
-                            ,style: TextStyle(color: Colors.black),
+                        'Go SignUp',
+                        style: TextStyle(color: Colors.black),
                       ),
                     ),
                   ),
@@ -172,16 +159,13 @@ class Login extends StatelessWidget {
   }
 }
 
-
 class SignUp extends StatelessWidget {
   var passwordFocusNode = FocusNode();
-
 
   SignUp({Key? key}) : super(key: key);
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
 
   static const colorRed = const Color(0xffe9002d);
   static const colorDarkRed = const Color(0xffa70000);
@@ -243,49 +227,35 @@ class SignUp extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: TextFormField(
                     controller: nameController,
-                    decoration:  InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
-                      labelText: 'Name',
-                        labelStyle: TextStyle(
-                            color: Colors.black
-                        )
-                    ),
+                    decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
+                        labelText: 'Name',
+                        labelStyle: TextStyle(color: Colors.black)),
                     keyboardType: TextInputType.name,
                   ),
                 ),
-
                 Container(
                   margin: EdgeInsets.fromLTRB(70, 0, 70, 0),
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: TextFormField(
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15))),
-                    labelText: 'Email',
-                    labelStyle: TextStyle(color: Colors.black),
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                ),
-                Container(
-                  margin: EdgeInsets.fromLTRB(70, 0, 70, 0),
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                  child: TextFormField(
-                    focusNode: passwordFocusNode,
-                    obscureText: true,
-                    controller: passwordController,
-                    decoration:  InputDecoration(
-                      border: const OutlineInputBorder(
+                    controller: emailController,
+                    decoration: const InputDecoration(
+                      border: OutlineInputBorder(
                           borderRadius: BorderRadius.all(Radius.circular(15))),
-                      labelText: 'Password',
+                      labelText: 'Email',
                       labelStyle: TextStyle(color: Colors.black),
-                      suffixIcon: Icon(CustomIcons.eye_slash,size: 15,color: passwordFocusNode.hasFocus? colorRed :Colors.black,),
-                      suffixIconColor: passwordFocusNode.hasFocus? colorRed :Colors.black,
-                      iconColor: passwordFocusNode.hasFocus? colorRed :Colors.black,
                     ),
+                    keyboardType: TextInputType.emailAddress,
                   ),
+                ),
+                Container(
+                  margin: EdgeInsets.fromLTRB(70, 0, 70, 0),
+                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
+                  child: PasswordWidget(
+                      passwordController: passwordController,
+                      colorDefault: colorRed),
                 ),
                 Container(
                     margin: EdgeInsets.fromLTRB(100, 10, 100, 0),
@@ -302,10 +272,10 @@ class SignUp extends StatelessWidget {
                       },
                       style: ButtonStyle(
                           shape:
-                          MaterialStateProperty.all<RoundedRectangleBorder>(
-                              RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(18.0),
-                                  side: BorderSide(color: colorRed)))),
+                              MaterialStateProperty.all<RoundedRectangleBorder>(
+                                  RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(18.0),
+                                      side: BorderSide(color: colorRed)))),
                     )),
                 Center(
                   child: Padding(
@@ -319,8 +289,8 @@ class SignUp extends StatelessWidget {
                         print("Go to Login");
                       },
                       child: const Text(
-                        'Have an account?\nGo Login'
-                        ,style: TextStyle(color: Colors.black),
+                        'Have an account?\nGo Login',
+                        style: TextStyle(color: Colors.black),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -355,6 +325,70 @@ class SignUp extends StatelessWidget {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class PasswordWidget extends StatefulWidget {
+  const PasswordWidget({
+    Key? key,
+    required this.passwordController,
+    required this.colorDefault,
+  }) : super(key: key);
+
+  final TextEditingController passwordController;
+  final Color colorDefault;
+
+  @override
+  _PasswordWidgetState createState() =>
+      _PasswordWidgetState(passwordController, colorDefault);
+}
+
+class _PasswordWidgetState extends State<PasswordWidget> {
+  FocusNode? _passwordFocusNode;
+  final TextEditingController passwordController;
+  final Color colorDefault;
+  _PasswordWidgetState(this.passwordController, this.colorDefault);
+
+  @override
+  void initState() {
+    super.initState();
+    _passwordFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    _passwordFocusNode?.dispose();
+    super.dispose();
+  }
+
+  void _requestFocus() {
+    setState(() {
+      FocusScope.of(context).requestFocus(_passwordFocusNode);
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return TextFormField(
+      obscureText: true,
+      controller: passwordController,
+      focusNode: _passwordFocusNode,
+      onTap: _requestFocus,
+      decoration: InputDecoration(
+        border: const OutlineInputBorder(
+            borderRadius: BorderRadius.all(Radius.circular(15))),
+        labelText: 'Password',
+        labelStyle: const TextStyle(color: Colors.black),
+        suffixIcon: Icon(
+          CustomIcons.eye_slash,
+          size: 15,
+          color: _passwordFocusNode!.hasFocus ? colorDefault : Colors.black,
+        ),
+        suffixIconColor:
+            _passwordFocusNode!.hasFocus ? colorDefault : Colors.black,
+        iconColor: _passwordFocusNode!.hasFocus ? colorDefault : Colors.black,
       ),
     );
   }
