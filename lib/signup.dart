@@ -1,3 +1,4 @@
+import 'package:amit_app/login.dart';
 import 'package:amit_app/password_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -111,6 +112,10 @@ class SignUpScreen extends StatelessWidget {
                         print("Name: ${nameController.text}");
                         print("Email: ${emailController.text}");
                         print("Password: ${passwordController.text}");
+
+                        Navigator.of(context).pushReplacement(
+                          MaterialPageRoute(builder: (_) =>  LoginScreen()),
+                        );
                       },
                       style: ButtonStyle(
                           shape:

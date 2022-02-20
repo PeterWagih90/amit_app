@@ -3,9 +3,10 @@ import 'package:amit_app/tasks.dart';
 import 'package:flutter/material.dart';
 
 import 'MoviesList.dart';
+import 'login.dart';
 
 void main() {
-  runApp(Tasks());
+  runApp(SignUpScreen());
 }
 
 
