@@ -1,5 +1,6 @@
 import 'package:amit_app/component/cart_item.dart';
 import 'package:amit_app/module/cart_item.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
@@ -24,6 +25,7 @@ class _CartScreenState extends State<CartScreen> {
           child: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 ListView.builder(
                   itemCount: widget.cartitems.length,
@@ -35,6 +37,8 @@ class _CartScreenState extends State<CartScreen> {
                 ),
                 Center(
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisSize: MainAxisSize.min,
                     children: [
                       Expanded(
                         child: RaisedButton(
