@@ -1,5 +1,4 @@
-import 'package:amit_app/login.dart';
-import 'package:amit_app/password_widget.dart';
+import 'package:amit_app/component/password_widget.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -83,7 +82,7 @@ class SignUpScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: PasswordWidget(
                       passwordController: passwordController,
-                      colorDefault: colorRed),
+                      colorDefault: colorRed,passwordOpacity: 1.0),
                 ),
                 Container(
                     margin: EdgeInsets.fromLTRB(100, 10, 100, 0),
@@ -119,6 +118,8 @@ class SignUpScreen extends StatelessWidget {
                       onPressed: () {
                         //Go to Login
                         print("Go to Login");
+                        Navigator.pushNamed(context, '/login');
+
                       },
                       child: const Text(
                         'Have an account?\nGo Login',

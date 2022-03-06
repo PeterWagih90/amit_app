@@ -1,5 +1,7 @@
-import 'package:amit_app/password_widget.dart';
+import 'package:amit_app/component/login_widget.dart';
+import 'package:amit_app/component/password_widget.dart';
 import 'package:flutter/material.dart';
+
 
 class LoginScreen extends StatelessWidget {
   LoginScreen({Key? key}) : super(key: key);
@@ -26,6 +28,7 @@ class LoginScreen extends StatelessWidget {
   static const int _redPrimaryValue = 0xffe9002d;
 
   static const String _title = 'Amit Learning App';
+  double passwordOpacity = 1;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -49,23 +52,14 @@ class LoginScreen extends StatelessWidget {
                 Container(
                   margin: EdgeInsets.fromLTRB(70, 0, 70, 0),
                   padding: const EdgeInsets.all(10),
-                  child: TextFormField(
-                    controller: emailController,
-                    decoration: const InputDecoration(
-                      border: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(15))),
-                      labelText: 'Email',
-                      labelStyle: TextStyle(color: Colors.black),
-                    ),
-                    keyboardType: TextInputType.emailAddress,
-                  ),
+                  child: LoginWidget(emailController: emailController,passwordOpacity: passwordOpacity,),
                 ),
                 Container(
                   margin: EdgeInsets.fromLTRB(70, 0, 70, 0),
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 10),
                   child: PasswordWidget(
                       passwordController: passwordController,
-                      colorDefault: colorRed),
+                      colorDefault: colorRed,passwordOpacity: passwordOpacity,),
                 ),
                 Container(
                     margin: EdgeInsets.fromLTRB(100, 10, 100, 0),
@@ -78,6 +72,7 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () {
                         print("Email: ${emailController.text}");
                         print("Password: ${passwordController.text}");
+                        Navigator.pushNamed(context, '/home');
                       },
                       style: ButtonStyle(
                           shape:
@@ -96,6 +91,7 @@ class LoginScreen extends StatelessWidget {
                       onPressed: () {
                         //forgot password screen
                         print("Go to SignUp");
+                        Navigator.pop(context);
                       },
                       child: const Text(
                         'Go SignUp',
@@ -136,3 +132,5 @@ class LoginScreen extends StatelessWidget {
       );
   }
 }
+
+

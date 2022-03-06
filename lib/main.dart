@@ -1,9 +1,13 @@
-import 'package:amit_app/signup.dart';
+import 'package:amit_app/screens/Counter.dart';
+import 'package:amit_app/screens/cart.dart';
+import 'package:amit_app/screens/login.dart';
+import 'package:amit_app/screens/signup.dart';
 import 'package:amit_app/tasks.dart';
 import 'package:flutter/material.dart';
 
-import 'MoviesList.dart';
-import 'login.dart';
+import 'module/cart_item.dart';
+import 'screens/MoviesList.dart';
+import 'screens/home_drawer.dart';
 
 void main() {
   const colorDarkRed = const Color(0xffa70000);
@@ -48,13 +52,42 @@ class Main extends StatelessWidget {
         primarySwatch: red,
       ),
 
-      initialRoute: '/',
+      initialRoute: '/cartScreen',
       routes: {
         // When navigating to the "/" route, build the FirstScreen widget.
         '/': (context) =>  SignUpScreen(),
         // When navigating to the "/second" route, build the SecondScreen widget.
         '/login': (context) =>  LoginScreen(),
+        '/home': (context) => HomeDrawer(),
+        'counter': (context) => Counter(),
+        '/cartScreen': (context) => CartScreen(getCartItems()),
       },
     );
+  }
+
+
+  List<CartItem> getCartItems() {
+    return [
+      CartItem(
+          "OnemanShoes",
+          "vey long space x of one of it's kind of material can be used in many ocaaasions",
+          "https://source.unsplash.com/user/c_v_r/100x100",
+          100,
+          "EGP",
+          1),
+      CartItem("WomanOnMarse", "it's kind of material many wow deal",
+          "https://source.unsplash.com/user/c_v_r/100x100", 750, "EGP", 3),
+      CartItem("HeroOnEarth", "having fun with apse",
+          "https://source.unsplash.com/user/c_v_r/100x100", 150, "EGP", 2),
+      CartItem("WomanOnMarse", "it's kind of material many wow deal",
+          "https://source.unsplash.com/user/c_v_r/100x100", 750, "EGP", 3),
+      CartItem(
+          "OnemanShoes",
+          "vey long space x of one of it's kind of material can be used in many ocaaasions",
+          "https://source.unsplash.com/user/c_v_r/100x100",
+          100,
+          "EGP",
+          1),
+    ];
   }
 }

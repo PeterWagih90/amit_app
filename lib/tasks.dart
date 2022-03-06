@@ -1,5 +1,5 @@
-import 'package:amit_app/Movie.dart';
-import 'package:amit_app/password_widget.dart';
+import 'package:amit_app/module/movie.dart';
+import 'package:amit_app/component/password_widget.dart';
 import 'package:flutter/material.dart';
 
 class Tasks extends StatelessWidget {
