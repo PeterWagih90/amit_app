@@ -16,17 +16,54 @@ class _CartItemWidgetState extends State<CartItemWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-
-      child: Row(
-        children: [
-          Image.network(widget.cartItem.imagePath,width: 100,height: 100,),
-          SizedBox(
-            width: 10,
-          ),
-          Column(
+        padding: EdgeInsets.all(20),
+        child: Column(
             children: [
-              Text(widget.cartItem.productName),
-              Text(widget.cartItem.description),
+              Row(
+                  children: [
+                    Image.network(
+                      widget.cartItem.imagePath,
+                      width: 100,
+                      height: 100,
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(10),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                      width: MediaQuery.of(context).size.width*.68,
+                            child: Center(
+                              child: Text(
+                                widget.cartItem.productName,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.bold
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            height: 10,
+                          ),
+                        SizedBox(
+                          width: MediaQuery.of(context).size.width*.68
+                          ,
+                              child: Text(
+                                widget.cartItem.description,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 15,
+
+                                ),
+                              ),
+                        ),
+                        ],
+                      ),
+                    ),
+                  ]),
               Row(
                 children: [
                   Text(
@@ -48,11 +85,10 @@ class _CartItemWidgetState extends State<CartItemWidget> {
                       },
                       child: Text("+"))
                 ],
-              )
-            ],
-          )
-        ],
-      ),
+              ),
+
+            ])
+
     );
   }
 }

@@ -17,49 +17,46 @@ class _CartScreenState extends State<CartScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Container(
-              child: Scrollbar(
-        thickness: 3,
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 10.0),
-          child: SingleChildScrollView(
-            physics: BouncingScrollPhysics(),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ListView.builder(
-                  itemCount: widget.cartitems.length,
-                  scrollDirection: Axis.vertical,
-                  shrinkWrap: true,
-                  itemBuilder: (BuildContext context, int index) {
-                    return CartItemWidget(widget.cartitems[index], index);
-                  },
-                ),
-                Center(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Expanded(
-                        child: RaisedButton(
-                          child: Text("Button"),
-                          onPressed: () {},
-                        ),
-                      ),
-                      Expanded(
-                        child: RaisedButton(
-                          child: Text("Button"),
-                          onPressed: () {},
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+          child: Column(
+          children: [
+          Container(
+            width: MediaQuery.of(context).size.width,
+            height: MediaQuery.of(context).size.height*.95,
+            child: ListView.builder(
+              itemCount: widget.cartitems.length,
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              itemBuilder: (BuildContext context, int index) {
+                return CartItemWidget(widget.cartitems[index], index);
+              },
             ),
           ),
-        ),
-      ))),
+          Container(
+            width: MediaQuery.of(context).size.width,
+            child: Center(
+
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Expanded(
+                    child: RaisedButton(
+                      child: Text("Button"),
+                      onPressed: () {},
+                    ),
+                  ),
+                  Expanded(
+                    child: RaisedButton(
+                      child: Text("Button"),
+                      onPressed: () {},
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          ],
+          )),
     );
   }
 }
